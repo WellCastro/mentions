@@ -1,6 +1,7 @@
 """Core from tweets mentions."""
 import requests
 from base.common import Base
+from collections import defaultdict
 
 
 class Tweet(Base):
@@ -20,8 +21,8 @@ class Tweet(Base):
         result = None
         try:
             r = requests.get(url, headers=header)
-            filter_tweets = self.filters_tweets(r.json(), int(user))
-            result = self.result_final(filter_tweets)
+            # filter_tweets = self.filters_tweets(r.json(), int(user))
+            result = r.json()
         except Exception as e:
             # log
             print e
@@ -53,6 +54,7 @@ class Tweet(Base):
             screen_name = data_user.get('screen_name')
             followers = data_user.get('followers_count')
             link = self.twitter_url + screen_name
+
             user = {'screen_name': screen_name, 'link': link, 'followers': followers}
             result.append({
                 'user': user,
@@ -64,3 +66,25 @@ class Tweet(Base):
             })
 
         return result
+
+    def group_tweets(self, data, user):
+        teste = defaultdict(list)
+        for d in data:
+            user_name = d.get('user').get('screen_name')
+
+            data_user = d.get('user')
+            screen_name = data_user.get('screen_name')
+            followers = data_user.get('followers_count')
+            link = self.twitter_url + screen_name
+
+            user = {'screen_name': screen_name, 'link': link, 'followers': followers}
+            teste[user_name].append({
+                'user': user,
+                'text': d.get('text'),
+                'retweets': d.get('retweet_count'),
+                'likes': d.get('favorite_count'),
+                'date': d.get('created_at'),
+                'link_tweet': self.tweet_url + str(d.get('id'))
+            })
+
+        return teste

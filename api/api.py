@@ -3,8 +3,6 @@
 import json
 import sys
 from bottle import run, get, response
-from collections import defaultdict
-
 
 sys.path.append("..")
 
@@ -20,6 +18,8 @@ def api_relevants(user):
 
     try:
         tweets = app.get_tweets(user)
+        filter_tweets = app.filters_tweets(tweets, int(user))
+        tweets = app.result_final(filter_tweets)
     except Exception as e:
         print e
         status = 400
@@ -37,6 +37,8 @@ def api_mentions(user):
 
     try:
         tweets = app.get_tweets(user)
+        tweets = app.filters_tweets(tweets, int(user))
+        tweets = app.group_tweets(tweets, int(user))
     except Exception as e:
         print e
         status = 400
