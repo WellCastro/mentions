@@ -52,8 +52,8 @@ class Tweet(Base):
             data_user = d.get('user')
             screen_name = data_user.get('screen_name')
             followers = data_user.get('followers_count')
-
-            user = {'screen_name': screen_name, 'link': self.twitter_url + screen_name, 'followers': followers}
+            link = self.twitter_url + screen_name
+            user = {'screen_name': screen_name, 'link': link, 'followers': followers}
             result.append({
                 'user': user,
                 'text': d.get('text'),
