@@ -5,6 +5,7 @@ RUN apt-get update
 RUN apt-get install -y python-pip
 
 RUN mkdir -p /opt/deploy/tweets
+RUN mkdir -p /opt/deploy/tweets/logs/
 RUN mkdir -p /var/log/tweets/webserver/
 RUN mkdir -p /var/log/tweets/application/
 
