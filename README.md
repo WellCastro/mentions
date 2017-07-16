@@ -5,21 +5,21 @@ API para consulta de Tweets.
 # Tecnologias utilizadas
 
 - [Python2.7](https://www.python.org)
-Python foi escolhido xxx
+Python foi escolhido por ser a linguagem que mais possuo afinidade atualmente.
 - [Bottle](https://bottlepy.org/docs/dev/)
 Por ser simples, rápido e um poderoso micro-framework Python, ótimo para atender a demanda do teste.
 - [Docker] (https://www.docker.com/)
-Escolhido para facilitar a implatanção, poupando instalações e documentos explicativos.
+Escolhido para facilitar a implatanção, deixando instalações apenas para containers e poupando documentos explicativos.
 
 
 # Exemplos GET
 
-Most Relevants:
+## Most Relevants:
 Url: /most_mentions/<id>
 
 curl -GET http://localhost:8001/most_mentions/42
 
-Most Mentions:
+## Most Mentions:
 Url: /most_relevants/<id>
 
 ** Optei por informar um ID na chamada para sempre atender a demanda sem a necessidade de correções no código, supondo que nem
