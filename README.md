@@ -15,13 +15,15 @@ Escolhido para facilitar a implatanção, deixando instalações apenas para con
 # Exemplos GET
 
 ## Most Relevants:
+```
 Url: /most_mentions/<id>
-
-curl -GET http://localhost:8001/most_mentions/42
+```
+curl -X GET http://localhost:8001/most_mentions/42
 
 ## Most Mentions:
-<code>Url: /most_relevants/<id></code>
-
+```
+Url: /most_relevants/<id>
+```
 ** Optei por informar um ID na chamada para sempre atender a demanda sem a necessidade de correções no código, supondo que nem sempre o user da LocaWeb seja o 42, deixando a aplicação reutilizável para outros IDs.
 
 
