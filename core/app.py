@@ -1,5 +1,6 @@
 """Core from tweets mentions."""
 import requests
+import logging
 from base.common import Base
 from collections import defaultdict
 
@@ -25,7 +26,7 @@ class Tweet(Base):
             result = r.json()
         except Exception as e:
             # log
-            print e
+            logging.error('Error get tweets: {0}/{1}'.format(user, e))
             raise
 
         return result
@@ -68,7 +69,7 @@ class Tweet(Base):
         return result
 
     def group_tweets(self, data, user):
-        teste = defaultdict(list)
+        grouped = defaultdict(list)
         for d in data:
             user_name = d.get('user').get('screen_name')
 
@@ -78,7 +79,7 @@ class Tweet(Base):
             link = self.twitter_url + screen_name
 
             user = {'screen_name': screen_name, 'link': link, 'followers': followers}
-            teste[user_name].append({
+            grouped[user_name].append({
                 'user': user,
                 'text': d.get('text'),
                 'retweets': d.get('retweet_count'),
@@ -87,4 +88,4 @@ class Tweet(Base):
                 'link_tweet': self.tweet_url + str(d.get('id'))
             })
 
-        return teste
+        return grouped

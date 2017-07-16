@@ -1,16 +1,17 @@
 import requests
 import sys
 import json
-sys.path.append("..")
-
 from core.base.common import Base
 from core.app import Tweet
+
 
 class TestClass:
 
     base = Base()
     core = Tweet()
     user_test = base.user_test
+    url_most_mentions = base.url_most_mentions
+    url_relevants = base.url_relevants
 
     def mock_tweets(self):
         # mock data tweets json
@@ -49,3 +50,17 @@ class TestClass:
             list_users.append(user)
 
         assert list_users == list_users_test
+
+    def test_get_relevants(self):
+        """GET request to url returns a 200."""
+
+        url = '{0}{1}'.format(self.url_relevants, self.user_test)
+        resp = requests.get(url)
+        assert resp.status_code == 200
+
+    def test_get_mentions(self):
+        """GET request to url returns a 200."""
+
+        url = '{0}{1}'.format(self.url_most_mentions, self.user_test)
+        resp = requests.get(url)
+        assert resp.status_code == 200

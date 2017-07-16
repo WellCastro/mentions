@@ -12,6 +12,8 @@ class Base(object):
         self.tweet_url = "https://twitter.com/i/moments/"
         self.base_dir = os.getcwd()
         self.user_test = 42
+        self.url_most_mentions = "http://localhost:8001/most_mentions/"
+        self.url_relevants = "http://localhost:8001/most_relevants/"
 
     def get_file_tweets(self, name):
         path = "{0}/valueobject/{1}".format(self.base_dir, name)
