@@ -8,7 +8,7 @@ API para consulta de Tweets.
 Python foi escolhido por ser a linguagem que mais possuo afinidade atualmente.
 - [Bottle](https://bottlepy.org/docs/dev/)
 Por ser simples, rápido e um poderoso micro-framework Python, ótimo para atender a demanda do teste.
-- [Docker] (https://www.docker.com/)
+- [Docker](https://www.docker.com/)
 Escolhido para facilitar a implatanção, deixando instalações apenas para containers e poupando documentos explicativos.
 
 
@@ -20,7 +20,7 @@ Url: /most_mentions/<id>
 curl -GET http://localhost:8001/most_mentions/42
 
 ## Most Mentions:
-Url: /most_relevants/<id>
+<code>Url: /most_relevants/<id></code>
 
 ** Optei por informar um ID na chamada para sempre atender a demanda sem a necessidade de correções no código, supondo que nem sempre o user da LocaWeb seja o 42, deixando a aplicação reutilizável para outros IDs.
 
