@@ -2,6 +2,7 @@
 
 import json
 import sys
+import bottle
 from bottle import run, get, response
 
 sys.path.append("..")
@@ -48,4 +49,8 @@ def api_mentions(user):
     return json.dumps(tweets)
 
 
-run(host='localhost', port=8001, debug=True)
+#run(host='localhost', port=8001, debug=True)
+if __name__ == "__main__":
+    run(host='localhost', port=8001)
+
+app = bottle.default_app()
