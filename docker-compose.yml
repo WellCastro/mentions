@@ -12,7 +12,6 @@ services:
   web:
     build: .
     container_name: web_page
-    # command: bash -c 'cd api && python api.py'
     command: bash -c 'cd api && gunicorn -w 4 api:app -b 0.0.0.0:8001'
     ports:
        - "8001:8001"
