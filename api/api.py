@@ -52,8 +52,6 @@ def api_mentions(user):
     response.status = status
     return json.dumps(tweets)
 
-
-#run(host='localhost', port=8001, debug=True)
 if __name__ == "__main__":
     run(host='localhost', port=8001)
 

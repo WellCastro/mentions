@@ -51,12 +51,7 @@ class Tweet(Base):
     def result_final(self, data):
         result = []
         for d in data:
-            data_user = d.get('user')
-            screen_name = data_user.get('screen_name')
-            followers = data_user.get('followers_count')
-            link = self.twitter_url + screen_name
-
-            user = {'screen_name': screen_name, 'link': link, 'followers': followers}
+            user = self.user_info(d)
             result.append({
                 'user': user,
                 'text': d.get('text'),
@@ -73,12 +68,7 @@ class Tweet(Base):
         for d in data:
             user_name = d.get('user').get('screen_name')
 
-            data_user = d.get('user')
-            screen_name = data_user.get('screen_name')
-            followers = data_user.get('followers_count')
-            link = self.twitter_url + screen_name
-
-            user = {'screen_name': screen_name, 'link': link, 'followers': followers}
+            user = self.user_info(d)
             grouped[user_name].append({
                 'user': user,
                 'text': d.get('text'),
@@ -89,3 +79,15 @@ class Tweet(Base):
             })
 
         return grouped
+
+
+    def user_info(self, user_data):
+
+        data_user = user_data.get('user')
+        screen_name = data_user.get('screen_name')
+        followers = data_user.get('followers_count')
+        link = self.twitter_url + screen_name
+
+        user = {'screen_name': screen_name, 'link': link, 'followers': followers}
+
+        return user
