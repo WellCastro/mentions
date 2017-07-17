@@ -44,7 +44,7 @@ docker-compose up -d
 Desenvolvi testes independentes um do outro.
 Os testes cobrem:
 - Chamada da API(check on-line) 
-- Teste do código(core), onde não é utilizado um tweet mock para validar os dados.
+- Teste do código(core), onde é utilizado um tweet mock para validar os dados.
 ```
 docker-compose run web python execute_tests.py
 ```
